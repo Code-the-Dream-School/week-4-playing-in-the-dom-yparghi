@@ -28,10 +28,28 @@ document.getElementById('a-1').appendChild(xSquareDiv);
 // append the button as a child of the element with the 'id = a-2'
 const colors = [ 'red' , 'white', 'black' , 'green' , 'orange'];
 
+let colorSelector = document.createElement('select');
+colorSelector.id = 'colorSelector';
+colorSelector.options = colors;
+document.getElementById('a-2').appendChild(colorSelector);
 
+for (let i = 0; i < colors.length; ++i) {
+    let option = document.createElement('option');
+    option.value = colors[i];
+    option.text = colors[i];
+    document.getElementById('colorSelector').appendChild(option);
+}
 
+let removeButton = document.createElement('button');
+removeButton.id = 'removeButton';
+removeButton.value = 'Remove';
+removeButton.innerHTML = 'Remove';
+removeButton.addEventListener('click', (event) => {
+    let colorSelector = document.getElementById('colorSelector');
+    colorSelector.options.remove(colorSelector.options.selectedIndex);
+});
+document.getElementById('a-2').appendChild(removeButton);
 
-//resolve // QUESTION 2 here
 
 
 
