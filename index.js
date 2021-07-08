@@ -2,10 +2,20 @@
 //Is time to create things in the DOM!!. We want you to create a new 'div' Element and append it as a child of the element that has the 'id = a-1' (the element is in index.html file)
 // all right our new element needs style. For that, assign to the new element the className 'square'!. Each time the user clicks on the new element it has to respond changing the displayed text 'x' to 'o'
 
+let toggleSquare = (event) => {
+    let square = document.getElementById('xoSquare');
+    if (square.innerHTML == '' || square.innerHTML == 'o') {
+        square.innerHTML = 'x';
+    } else {
+        square.innerHTML = 'o';
+    }
+};
 
-
-
-//resolve // QUESTION 1 here
+let xSquareDiv = document.createElement('div');
+xSquareDiv.id = 'xoSquare';
+xSquareDiv.classList.add('square');
+xSquareDiv.addEventListener('click', toggleSquare);
+document.getElementById('a-1').appendChild(xSquareDiv);
 
 
 
@@ -18,10 +28,28 @@
 // append the button as a child of the element with the 'id = a-2'
 const colors = [ 'red' , 'white', 'black' , 'green' , 'orange'];
 
+let colorSelector = document.createElement('select');
+colorSelector.id = 'colorSelector';
+colorSelector.options = colors;
+document.getElementById('a-2').appendChild(colorSelector);
 
+for (let i = 0; i < colors.length; ++i) {
+    let option = document.createElement('option');
+    option.value = colors[i];
+    option.text = colors[i];
+    document.getElementById('colorSelector').appendChild(option);
+}
 
+let removeButton = document.createElement('button');
+removeButton.id = 'removeButton';
+removeButton.value = 'Remove';
+removeButton.innerHTML = 'Remove';
+removeButton.addEventListener('click', (event) => {
+    let colorSelector = document.getElementById('colorSelector');
+    colorSelector.options.remove(colorSelector.options.selectedIndex);
+});
+document.getElementById('a-2').appendChild(removeButton);
 
-//resolve // QUESTION 2 here
 
 
 
